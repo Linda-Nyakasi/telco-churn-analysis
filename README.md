@@ -28,7 +28,7 @@ telco-churn-analysis/
 - Converted `TotalCharges` from `VARCHAR` to `DECIMAL(10,2)` after cleaning
 - Full null audit confirmed zero missing values across all 21 columns
 - Additional data transformations applied in Power BI Power Query are documented
-  in [DAX Measures.md](DAX Measures.md)
+  in [DAX Measures.md](DAX%20Measures.md)
 
 ## SQL Analysis
 ### Views Created
@@ -105,7 +105,7 @@ The dashboard is structured across four pages, with slicers for Contract Type an
 
 ## DAX Measures & Calculated Columns
 Full documentation of all DAX measures, calculated columns, and the risk scoring model is available in the dedicated reference file:  
-[DAX Measures.md](DAX Measures.md)
+[DAX Measures.md](DAX%20Measures.md)
 
 ## Key Findings
 
