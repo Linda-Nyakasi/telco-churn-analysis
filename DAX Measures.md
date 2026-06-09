@@ -28,6 +28,11 @@ Retained Customers = COUNTROWS(FILTER(customers, customers[Churn] = "No"))
 Churn Rate = DIVIDE([Churned Customers], [Total Customers], 0)
 ```
 ```dax
+-- Used for card visuals to show the value in decimal/numeric precision
+
+Churn Rate NUM = DIVIDE([Churned Customers], [Total Customers], 0)
+```
+```dax
 Retention Rate = 1 - [Churn Rate]
 ```
 
@@ -88,13 +93,6 @@ CALCULATE(
 
 ### Risk Measures
 ```dax
-High Risk Customers = 
-CALCULATE(
-    [Total Customers],
-    customers[Risk Score] >= 3
-)
-```
-```dax
 Critical Risk Customers = 
 CALCULATE(
     [Total Customers],
@@ -102,7 +100,15 @@ CALCULATE(
 )
 ```
 ```dax
-High Risk Churn Rate = 
+Retention Targets = 
+CALCULATE
+(
+    [Total Customers],
+    customers[Risk Score] >= 3
+)
+```
+```dax
+Retention Targets Churn Rate = 
 CALCULATE(
     [Churn Rate Measure],
     customers[Risk Score] >= 3
@@ -188,9 +194,10 @@ Each customer receives a risk score from 0 to 4 based on four equally-weighted b
 | 0     | Minimal    | Meets no conditions; lowest churn probability       |
 
 ## Results
-- 606 Critical risk customers (Score = 4): Immediate retention priority
-- 1,891 High risk customers (Score ≥ 3): 26.8% of total customer base
-- High risk segment churn rate: 59.44% vs overall 26.54%
-- Monthly revenue exposure from high-risk segment: $149,766
+- **606 critical risk customers** (Score = 4): immediate retention priority
+- **1,891 retention targets** (Score ≥ 3): 26.8% of total customer base (1,891 ÷ 7,043)
+- Retention targets churn at **59.44%** vs the overall rate of **26.54%**
 
-Note: The current model assigns equal weights to all four factors. 
+Note: 
+> The current model assigns equal weights to all four risk factors.  
+> A machine-learning model could derive data-driven weights for more accurate scoring.

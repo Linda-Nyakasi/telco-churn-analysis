@@ -14,14 +14,20 @@ The project covers end-to-end data analysis: MySQL setup, data cleaning, explora
 - MySQL 8.0
 - MySQL Workbench
 - Power BI Desktop
+- Looker Studio (Google Data Studio)
+- DAX (Data Analysis Expressions)
+- Git and GitHub
 
 ## Project Structure
 ```
 telco-churn-analysis/
 - telco_churn_analysis.sql             # Full SQL script: setup, cleaning, analysis, views
 - Telco Customer Churn Dashboard.pbix  # Power BI dashboard file
+- DAX Measures.md                      # DAX measures and calculated columns
+- Looker Studio Dashboard              # Interactive dashboard
 - README.md                            # Project documentation
 ```
+
 ## Data Cleaning
 - Identified 11 rows silently skipped during import due to a space character in the `TotalCharges` column. The skipped records were not a true empty string. This was confirmed via `HEX()` and `LENGTH()` functions
 - Replaced space characters on the `TotalCharges` column with `0` for customers with `tenure = 0` (new customers with no completed billing cycle)
@@ -88,7 +94,7 @@ The dashboard is structured across four pages, with slicers for Contract Type an
 - Churn Rate by Senior Status and Contract Type *(grouped column)*
 - Risk Score Distribution *(donut chart)*
 
-**Risk Summary Cards**: Critical Risk Customers · High Risk Customers · High Risk Churn Rate
+**Risk Summary Cards**: Critical Risk Customers · Retention Target · Retention Target Churn Rate
 
 **Slicers:** Filter by Contract Type · Filter by Internet Service · Filter by Senior Status
 
@@ -104,8 +110,22 @@ The dashboard is structured across four pages, with slicers for Contract Type an
 **Slicers:** Filter by Contract Type · Filter by Internet Service
 
 ## DAX Measures & Calculated Columns
-Full documentation of all DAX measures, calculated columns, and the risk scoring model is available in the dedicated reference file:  
+Full documentation of all DAX measures, calculated columns, and the risk scoring model is available in the dedicated reference file:
 [DAX Measures.md](DAX%20Measures.md)
+
+## Looker Studio Dashboard
+To demonstrate cross-platform BI proficiency, the same churn analysis was rebuilt in **Looker Studio (Google Data Studio)**.  
+[View Interactive Looker Studio Dashboard](https://datastudio.google.com/s/tDW3a5wTujg)
+
+### Looker Studio Implementation Highlights
+
+- **Data Source:** Google Sheets connected to the dataset
+- **Calculated Fields:** Custom churn rate, revenue lost, and cumulative churn metrics 
+- **Charts:** Bar charts, line chart, pivot table, donut chart 
+- **Pivot Table:** Churn rate matrix showing Internet Service vs Contract Type with heatmap conditional formatting
+- **Reference Lines:** Overall churn rate (26.54%) as a constant line on cumulative churn chart
+- **Interactive Filters:** Dropdown controls for Contract Type and Internet Service 
+- **Conditional Formatting:** Red/amber/green heatmap applied consistently across bar charts and pivot tables
 
 ## Key Findings
 
@@ -120,7 +140,7 @@ Full documentation of all DAX measures, calculated columns, and the risk scoring
 - Two year contracts reduce churn to single digits across all service types
 
 ### Tenure
-- 0–1 Year: **48%** churn — highest risk period in the customer lifecycle. Surviving the first year is the strongest indicator of long-term retention
+- 0–1 Year: **48%** churn. Highest risk period in the customer lifecycle. Surviving the first year is the strongest indicator of long-term retention
 - 1–2 Years: **29%** · 2–4 Years: **20%** · 4–6 Years: **10%** 
 - Churn rate rebounds at months 65–70, suggesting contract renewal pressure at the loyalty stage
 
@@ -142,8 +162,8 @@ Full documentation of all DAX measures, calculated columns, and the risk scoring
 - Customers without dependents: **31%** vs with dependents: **15%**
 
 ### Service Add-ons
-- No online security: **42%** churn vs with online security: **15%** — 27 percentage point gap
-- No tech support: **42%** churn vs with tech support: **15%** — identical pattern
+- No online security: **42%** churn vs with online security: **15%**, a 27 percentage point gap
+- No tech support: **42%** churn vs with tech support: **15%**, an identical pattern
 - Online security and tech support are the strongest service-level churn predictors
 
 ### Revenue Impact
@@ -154,10 +174,11 @@ Full documentation of all DAX measures, calculated columns, and the risk scoring
 - Churned customers pay an average of **$13** more per month than retained customers, suggesting price sensitivity is a churn driver
 
 ### Risk Scoring
-- 1,891 high risk customers (Risk Score ≥ 3), 26.8% of total customer base
-- 606 critical risk customers (Risk Score = 4); highest priority retention targets
-- High risk churn rate: 59.44%, more than double the overall rate
-- High risk monthly revenue exposure: $149,766; exceeds current monthly revenue lost ($139,131), representing the next wave of potential revenue loss if unaddressed
+- **1,891 retention targets** (Risk Score ≥ 3), representing 26.8% of the total 
+  customer base (1,891 ÷ 7,043)
+- **606 critical risk customers** (Risk Score = 4), the highest priority segment 
+  for retention intervention
+- Retention targets churn at **59.44%**, more than double the overall rate of 26.54%
 
 ## Business Recommendations
 1. **Prioritize Contract Conversion:** Converting month-to-month customers to annual contracts is the single highest-impact retention action, targeting the 43% churn rate and $121K monthly revenue exposure 
@@ -166,7 +187,7 @@ Full documentation of all DAX measures, calculated columns, and the risk scoring
 4. **Bundle Online Security and Tech Support.** The 27-percentage point churn reduction associated with these add-ons suggests they should be promoted aggressively, potentially as free trial add-ons for high-risk customers 
 5. **Migrate Electronic Check Users to Auto-Pay:** Nudging customers toward automatic payment methods reduces churn from 45% to 15–17%, a low-cost, high-impact intervention 
 6. **Design a Senior Citizen Retention Program.** At 42% overall and 55% on month-to-month contracts, senior customers are disproportionately at risk. Dedicated support channels, simplified plans, and contract conversion incentives are warranted 
-7. **Immediate Outreach to 606 Critical Risk Customers:** These customers meet all four churn risk factors simultaneously. Proactive retention intervention on this segment could protect up to $149,766 in monthly recurring revenue
+7. **Immediate Outreach to 606 Critical Risk Customers:** These customers meet all four churn risk factors simultaneously. Proactive retention intervention on this segment could protect significant monthly recurring revenue
 
 ## Limitations & Future Work
 ### Limitations
@@ -181,4 +202,4 @@ Build a predictive churn model in Python using this dataset, deployable as a rea
 ## Author
 **Linda Nyakasi**  
 Certified Data Analyst | Pursuing Data Science & Machine Learning  
-[LinkedIn](www.linkedin.com/in/linda-nyakasi) | [GitHub](https://github.com/Linda-Nyakasi)
+[LinkedIn](https://www.linkedin.com/in/linda-nyakasi) | [GitHub](https://github.com/Linda-Nyakasi)
