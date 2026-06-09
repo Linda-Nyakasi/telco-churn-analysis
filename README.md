@@ -110,12 +110,12 @@ The dashboard is structured across four pages, with slicers for Contract Type an
 **Slicers:** Filter by Contract Type · Filter by Internet Service
 
 ## DAX Measures & Calculated Columns
-Full documentation of all DAX measures, calculated columns, and the risk scoring model is available in the dedicated reference file:
+Full documentation of all DAX measures, calculated columns, and the risk scoring model is available in the dedicated reference file:  
 [DAX Measures.md](DAX%20Measures.md)
 
 ## Looker Studio Dashboard
 To demonstrate cross-platform BI proficiency, the same churn analysis was rebuilt in **Looker Studio (Google Data Studio)**.  
-[View Interactive Looker Studio Dashboard](https://datastudio.google.com/s/tDW3a5wTujg)
+[View Interactive Looker Studio Dashboard](https://datastudio.google.com/s/vWXOfoP3k3M)
 
 ### Looker Studio Implementation Highlights
 
