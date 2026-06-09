@@ -115,7 +115,7 @@ Full documentation of all DAX measures, calculated columns, and the risk scoring
 
 ## Looker Studio Dashboard
 To demonstrate cross-platform BI proficiency, the same churn analysis was rebuilt in **Looker Studio (Google Data Studio)**.  
-[View Interactive Looker Studio Dashboard](https://datastudio.google.com/s/vWXOfoP3k3M)
+[View Interactive Looker Studio Dashboard](https://datastudio.google.com/s/m45OeGVC31g)
 
 ### Looker Studio Implementation Highlights
 
