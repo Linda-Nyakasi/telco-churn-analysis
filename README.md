@@ -1,9 +1,16 @@
 # Telecom Customer Churn Analysis
 
 ## Overview
-This project analyses customer churn behavior for a fictional telecom company using the IBM Telco Customer Churn dataset (7,043 customers, 21 features). The goal is to identify the key drivers of churn, quantify the financial impact, and surface actionable retention insights through SQL analysis and an interactive Power BI dashboard.
+This project analyses customer churn behavior for a fictional telecom company 
+using the IBM Telco Customer Churn dataset (7,043 customers, 21 features). The 
+goal is to identify the key drivers of churn, quantify the financial impact, and 
+surface actionable retention insights through SQL analysis and interactive BI reports.
 
-The project covers end-to-end data analysis: MySQL setup, data cleaning, exploratory analysis, view creation, DAX modelling, risk scoring, and a four-page interactive Power BI dashboard with cross-page slicer synchronization, drill down, conditional formatting, and dynamic tooltips.
+The project covers end-to-end data analysis: MySQL setup, data cleaning, 
+exploratory analysis, view creation, DAX modelling, risk scoring, and a four-page 
+interactive Power BI report with cross-page slicer synchronization, drill down, 
+conditional formatting, and dynamic tooltips. The same analysis was subsequently 
+rebuilt in Looker Studio to demonstrate cross-platform BI proficiency.
 
 ## Dataset
 - **Source:** [IBM Telco Customer Churn — Kaggle](https://www.kaggle.com/datasets/blastchar/telco-customer-churn)
@@ -22,9 +29,8 @@ The project covers end-to-end data analysis: MySQL setup, data cleaning, explora
 ```
 telco-churn-analysis/
 - telco_churn_analysis.sql             # Full SQL script: setup, cleaning, analysis, views
-- Telco Customer Churn Dashboard.pbix  # Power BI dashboard file
+- Telco Customer Churn Report.pbix     # Power BI report file
 - DAX Measures.md                      # DAX measures and calculated columns
-- Looker Studio Dashboard              # Interactive dashboard
 - README.md                            # Project documentation
 ```
 
@@ -41,7 +47,7 @@ telco-churn-analysis/
 |           View            | Description |
 |---------------------------|----------|
 | vw_churn_summary          | Overall churn counts and rate   | 
-| vw_churn_by_contract      | Churn rate segmented by contract type  |
+| vw_churn_by_contract      | Churn rate segmented by contract type |
 | vw_churn_by_tenure        | Churn rate segmented by tenure group |
 | vw_churn_by_internet      | Churn rate segmented by internet service type |
 | vw_churn_by_payment       | Churn rate segmented by payment method |
@@ -58,8 +64,11 @@ telco-churn-analysis/
 - Window functions: `SUM() OVER()`, `LAG()`
 - Views: `CREATE VIEW`
 
-## Power BI Dashboard
-The dashboard is structured across four pages, with slicers for Contract Type and Internet Service synchronized across all pages. All KPI cards are isolated from cross-filter interactions to preserve headline figures. Conditional formatting (red/amber/green) is applied consistently across all bar charts and matrix visuals.
+## Power BI Report
+The report is structured across four pages, with slicers for Contract Type and 
+Internet Service synchronised across all pages. All KPI cards are isolated from 
+cross-filter interactions to preserve headline figures. Conditional formatting 
+(red/amber/green) is applied consistently across all bar charts and matrix visuals.
 
 ### Page 1: Churn Overview
 **KPI Cards:** Total Customers · Churned Customers · Churn Rate · Monthly Revenue Lost · Total Revenue Lost 
@@ -94,7 +103,7 @@ The dashboard is structured across four pages, with slicers for Contract Type an
 - Churn Rate by Senior Status and Contract Type *(grouped column)*
 - Risk Score Distribution *(donut chart)*
 
-**Risk Summary Cards**: Critical Risk Customers · Retention Target · Retention Target Churn Rate
+**Risk Summary Cards**: Critical Risk Customers · Retention Targets · Retention Targets Churn Rate
 
 **Slicers:** Filter by Contract Type · Filter by Internet Service · Filter by Senior Status
 
@@ -113,9 +122,9 @@ The dashboard is structured across four pages, with slicers for Contract Type an
 Full documentation of all DAX measures, calculated columns, and the risk scoring model is available in the dedicated reference file:  
 [DAX Measures.md](DAX%20Measures.md)
 
-## Looker Studio Dashboard
-To demonstrate cross-platform BI proficiency, the same churn analysis was rebuilt in **Looker Studio (Google Data Studio)**.  
-[View Interactive Looker Studio Dashboard](https://datastudio.google.com/s/m45OeGVC31g)
+## Looker Studio Report
+To demonstrate cross-platform BI proficiency, the same churn analysis was rebuilt in **Looker Studio (Google Data Studio)**.
+[View Interactive Looker Studio Report](https://datastudio.google.com/s/m45OeGVC31g)
 
 ### Looker Studio Implementation Highlights
 
@@ -174,11 +183,11 @@ To demonstrate cross-platform BI proficiency, the same churn analysis was rebuil
 - Churned customers pay an average of **$13** more per month than retained customers, suggesting price sensitivity is a churn driver
 
 ### Risk Scoring
-- **1,891 retention targets** (Risk Score ≥ 3), representing 26.8% of the total 
-  customer base (1,891 ÷ 7,043)
-- **606 critical risk customers** (Risk Score = 4), the highest priority segment 
+- **1,919 retention targets** (Risk Score ≥ 3), representing 27.2% of the total 
+  customer base (1,919 ÷ 7,043)
+- **631 critical risk customers** (Risk Score = 4), the highest priority segment 
   for retention intervention
-- Retention targets churn at **59.44%**, more than double the overall rate of 26.54%
+- Retention targets churn at **59.25%**, more than double the overall rate of 26.54%
 
 ## Business Recommendations
 1. **Prioritize Contract Conversion:** Converting month-to-month customers to annual contracts is the single highest-impact retention action, targeting the 43% churn rate and $121K monthly revenue exposure 
@@ -187,7 +196,7 @@ To demonstrate cross-platform BI proficiency, the same churn analysis was rebuil
 4. **Bundle Online Security and Tech Support.** The 27-percentage point churn reduction associated with these add-ons suggests they should be promoted aggressively, potentially as free trial add-ons for high-risk customers 
 5. **Migrate Electronic Check Users to Auto-Pay:** Nudging customers toward automatic payment methods reduces churn from 45% to 15–17%, a low-cost, high-impact intervention 
 6. **Design a Senior Citizen Retention Program.** At 42% overall and 55% on month-to-month contracts, senior customers are disproportionately at risk. Dedicated support channels, simplified plans, and contract conversion incentives are warranted 
-7. **Immediate Outreach to 606 Critical Risk Customers:** These customers meet all four churn risk factors simultaneously. Proactive retention intervention on this segment could protect significant monthly recurring revenue
+7. **Immediate Outreach to 631 Critical Risk Customers:** These customers meet all four churn risk factors simultaneously. Proactive retention intervention on this segment could protect significant monthly recurring revenue
 
 ## Limitations & Future Work
 ### Limitations
