@@ -1,5 +1,5 @@
 # DAX Measures & Calculated Columns
-This document details all DAX measures and calculated columns created in the Power BI dashboard for the Telecom Customer Churn Analysis project.
+This document details all DAX measures and calculated columns created in the Power BI report for the Telecom Customer Churn Analysis project.
 
 ## Power Query Transformations
 
