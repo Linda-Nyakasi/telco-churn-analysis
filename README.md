@@ -210,5 +210,5 @@ Build a predictive churn model in Python using this dataset, deployable as a rea
 
 ## Author
 **Linda Nyakasi**  
-Certified Data Analyst | Pursuing Data Science & Machine Learning  
+Certified Data Analyst 
 [LinkedIn](https://www.linkedin.com/in/linda-nyakasi) | [GitHub](https://github.com/Linda-Nyakasi)
